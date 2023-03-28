@@ -1,0 +1,80 @@
+\documentclass[12pt, a4paper]{extarticle}
+
+\usepackage{hyperref}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage[x11names]{xcolor}
+\usepackage[a4paper]{geometry}
+\usepackage[backend=bibtex,style=numeric,sorting=none,natbib=true]{biblatex}
+\usepackage[autostyle, italian=quotes]{csquotes}
+\usepackage{xfrac}
+\usepackage{float}
+\usepackage{eurosym}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{minted}
+\setminted{fontsize=\footnotesize, baselinestretch=0.9, obeytabs=true, tabsize=4}
+
+\hypersetup{
+	colorlinks=false
+}
+
+\addbibresource{bibliography.bib}
+
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+  {\iffieldundef{prenote}
+     {}
+     {\BibliographyWarning{Ignoring prenote argument}}%
+   \iffieldundef{postnote}
+     {}
+     {\BibliographyWarning{Ignoring postnote argument}}%
+   \bibopenbracket}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\supercitedelim}
+  {\bibclosebracket}
+
+\let\cite = \supercite
+
+\newcommand{\seccolor}{\color{DodgerBlue3}}
+
+\renewcommand*{\bibfont}{\sffamily}
+\titleformat*{\section}{\Large\bfseries\sffamily\seccolor}
+\titleformat*{\subsection}{\large\bfseries\sffamily\seccolor}
+\titleformat*{\subsubsection}{\bfseries\sffamily\seccolor}
+
+\begin{document}
+\fontfamily{lmss}\selectfont
+\begin{titlepage}
+	\flushright
+	\hfill
+	\vfill
+	{\LARGE Sistema basato su conoscenza e apprendimento automatico per il turismo \par}
+	{\seccolor\rule[5pt]{\textwidth}{.8pt} \par}
+  {\large Francesco Musci}\\
+  721269\\
+  \href{mailto:f.musci10@studenti.uniba.it}{\texttt{f.musci10@studenti.uniba.it}}
+  \url{https://github.com/muscif/icon2122}
+	\vfill
+    Progetto per l'esame di Ingegneria della Conoscenza\\
+    A.A. 2021/2022
+\end{titlepage}
+\newpage
+\pagestyle{empty}
+\
+\newpage
+\begin{titlepage}
+    \tableofcontents
+\end{titlepage}
+
+\pagestyle{plain}
+
+\input{doc.tex}
+
+\newpage
+\printbibliography[heading=bibintoc]
+
+\end{document}

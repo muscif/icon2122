@@ -94,7 +94,7 @@ def get_restaurants(areaId, print_tab=False):
 def get_attractions(areaId, print_tab=False):
     elements = set()
 
-    query = overpassQueryBuilder(area=areaId, elementType="node", selector='"tourism"~"attraction|gallery|museum|yes"')
+    query = overpassQueryBuilder(area=areaId, elementType="node", selector='"tourism"~"attraction|gallery|museum"')
     res: OverpassResult = overpass.query(query)
     elements.update(res.elements())
 
@@ -139,7 +139,7 @@ def build_facts(settlement, admin_level):
     restaurants = list(get_restaurants(areaId))
     attractions = list(get_attractions(areaId))
 
-    with open(f"{settlement}.pl", "w", encoding="utf-8") as facts:
+    with open(f"{settlement.lower()}.pl", "w", encoding="utf-8") as facts:
         for name, lat, lon, phone, website, email, stars, internet_access, wheelchair in accommodations:
             name = name.replace("'", "")
             phone = phone if phone not in ("None", None) else "false"

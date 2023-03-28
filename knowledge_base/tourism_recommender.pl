@@ -82,7 +82,7 @@ go :-
         DestinationInput == 3 -> Destination = parigi;
         DestinationInput == 4 -> Destination = milano
     ),
-    consult(Destination),
+    consult(city_facts/Destination),
 
     write("\n> È necessario che i luoghi siano accessibili in sedia a rotelle?\n1. Sì\n2. No\n"),
     read(InputWheelchair),
@@ -161,5 +161,4 @@ go :-
     display_attraction(Attraction),
 
     nl, nl, write("Grazie!"),
-
     halt.
